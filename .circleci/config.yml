@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Start container and push to Docker
           command: |
-            docker build --tag $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1 .
+            docker build --t $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1 .
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
             docker push $DOCKER_HUB_USER/oc_lettingslettings_v4:$CIRCLE_SHA1
 
