@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Start container and push to Docker
           command: |
-            docker build -t $DOCKER_HUB_USER/oc_lettings_v4:a52ca12aeadb8432cfb8a46877962f8f466c8ac7 .
+            docker build -t spino13/oc_lettings_v4:a52ca12aeadb8432cfb8a46877962f8f466c8ac7 .
 
 
 # Invoke jobs via workflows
