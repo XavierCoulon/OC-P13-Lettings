@@ -50,9 +50,9 @@ jobs:
       - run:
           name: Start container and push to Docker
           command: |
-            docker build -t $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1 .
+            docker build -t $DOCKER_HUB_USER/oc_lettings_v4:a52ca12aeadb8432cfb8a46877962f8f466c8ac7 .
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
-            docker push $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER/oc_lettings_v4:a52ca12aeadb8432cfb8a46877962f8f466c8ac7
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
