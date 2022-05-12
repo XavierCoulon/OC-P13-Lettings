@@ -41,18 +41,18 @@ jobs:
           name: Run flake8
           command: flake8
 
-  deploy-docker:
+  build-image-docker:
     docker:
       - image: cimg/python:3.10.4
     steps:
       - checkout
       - setup_remote_docker
       - run:
-          name: Start container and push to Docker
+          name: build image then push to Docker
           command: |
-            docker build -t ${DOCKER_HUB_USER}/oc_lettings_v4:$CIRCLE_SHA1 .
-            echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USER} --password-stdin
-            docker push ${DOCKER_HUB_USER}/oc_lettings_v4:$CIRCLE_SHA1
+            docker build -t $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1 .
+            echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
+            docker push $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -61,4 +61,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - deploy-docker
+      - build-image-docker
