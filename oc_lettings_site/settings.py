@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'profiles',
     'lettings',
     'home',
-    'gunicorn'
 ]
 
 MIDDLEWARE = [
@@ -113,4 +112,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Configure Django App for Heroku.
-django_on_heroku.settings(locals())
+django_on_heroku.settings(locals(), test_runner=False)
