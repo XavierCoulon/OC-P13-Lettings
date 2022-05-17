@@ -1,1 +1,1 @@
-web: gunicorn oc_lettgins_site.wsgi
+web: gunicorn oc_lettings_site.wsgi
