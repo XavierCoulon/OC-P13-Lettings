@@ -1,4 +1,4 @@
-#!/Users/xco/Documents/XCO/OC/P13_OC_Lettings/Python-OC-Lettings-FR/env/bin/python3
+#!/Users/xco/Documents/XCO/OC/P13_OC_Lettings/Python-OC-Lettings-FR/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
