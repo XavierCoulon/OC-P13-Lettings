@@ -75,17 +75,17 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - build-image-docker
-        requires:
-          - build-and-test
-        filters:
-          branches:
-            only:
-              - main
-      - deploy-heroku
-        requires:
-          - build-and-test
-        filters:
-          branches:
-            only:
-              - main
+      - build-image-docker:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - main
+      - deploy-heroku:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - main
