@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profiles',
     'lettings',
-    'home'
+    'home',
+    'gunicorn'
 ]
 
 MIDDLEWARE = [
