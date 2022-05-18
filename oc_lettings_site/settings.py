@@ -3,6 +3,10 @@ import django_on_heroku
 import sentry_sdk
 
 from sentry_sdk.integrations.django import DjangoIntegration
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -118,7 +122,7 @@ STATIC_URL = '/static/'
 django_on_heroku.settings(locals(), test_runner=False)
 
 sentry_sdk.init(
-    dsn=os.environ.get("SENTRY_KEY"),
+    dsn=os.getenv("SENTRY_DSN"),
     integrations=[DjangoIntegration()],
 
     # Set traces_sample_rate to 1.0 to capture 100%
