@@ -1,5 +1,5 @@
 import os
-import django_on_heroku
+#import django_on_heroku
 import sentry_sdk
 
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -119,7 +119,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Configure Django App for Heroku.
-django_on_heroku.settings(locals(), test_runner=False)
+#django_on_heroku.settings(locals(), test_runner=False)
 
 sentry_sdk.init(
     dsn=os.getenv("SENTRY_DSN"),
