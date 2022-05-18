@@ -50,9 +50,9 @@ jobs:
       - run:
           name: build image then push to Docker
           command: |
-            docker build -t $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1 .
+            docker build -t $DOCKER_HUB_USER/oc-lettings-xco:$CIRCLE_SHA1 .
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
-            docker push $DOCKER_HUB_USER/oc_lettings_v4:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER/oc-lettings-xco:$CIRCLE_SHA1
 
   deploy-heroku:
     docker:

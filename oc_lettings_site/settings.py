@@ -118,7 +118,7 @@ STATIC_URL = '/static/'
 django_on_heroku.settings(locals(), test_runner=False)
 
 sentry_sdk.init(
-    dsn=os.getenv("SENTRY_DNS"),
+    dsn=os.environ.get("SENTRY_KEY"),
     integrations=[DjangoIntegration()],
 
     # Set traces_sample_rate to 1.0 to capture 100%
