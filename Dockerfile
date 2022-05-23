@@ -3,6 +3,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 ENV PORT=8000
+ENV SECRET_KEY=$SECRET_KEY
 EXPOSE 8000
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
