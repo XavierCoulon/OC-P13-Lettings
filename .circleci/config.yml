@@ -50,7 +50,7 @@ jobs:
       - run:
           name: build image then push to Docker
           command: |
-            docker build -t $DOCKER_HUB_USER/$DOCKER_REPO:toto .
+            docker build -t $DOCKER_HUB_USER/$DOCKER_REPO:toto -t $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 .
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
             docker push $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
 
