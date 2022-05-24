@@ -53,7 +53,6 @@ jobs:
             docker build -t $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 -t $DOCKER_HUB_USER/$DOCKER_REPO:toto .
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
             docker push $DOCKER_HUB_USER/$DOCKER_REPO --all-tags
-            docher push registry.heroku.com/oc-lettings-xco/web
 
 
   deploy-heroku:
