@@ -51,7 +51,7 @@ jobs:
           name: build image then push to Docker
           command: |
             docker build -t $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 .
-            docker tag registry.heroku.com/my-app-12355/web $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
+            docker tag $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 registry.heroku.com/my-app-12355/web
             echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
             docker push $DOCKER_HUB_USER/$DOCKER_REPO --all-tags
 
