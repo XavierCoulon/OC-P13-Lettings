@@ -58,8 +58,6 @@ jobs:
     docker:
       - image: cimg/python:3.10.4
     steps:
-      - checkout
-      - setup_remote_docker
       - run:
           name: push previous image to Heroku
           command: |
