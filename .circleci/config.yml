@@ -98,7 +98,7 @@ workflows:
             branches:
               only:
                 - main
-      - deploy-heroku-old:
+      - deploy-heroku:
           requires:
             - build-image-docker
           filters:
