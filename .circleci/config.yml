@@ -56,6 +56,8 @@ jobs:
 
   deploy-heroku:
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: push previous image to Heroku
           command: |
