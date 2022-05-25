@@ -58,9 +58,12 @@ jobs:
     docker:
       - image: cimg/python:3.10.4
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: push previous image to Heroku
           command: |
+            echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USER --password-stdin
             docker pull $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
             docker tag $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
