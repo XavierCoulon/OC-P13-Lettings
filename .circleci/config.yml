@@ -64,7 +64,7 @@ jobs:
           name: push previous image to Heroku
           command: |
             docker pull $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
-            docker tag $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
+            docker tag $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
             docker login --username=$DOCKER_HUB_USER --password=$HEROKU_AUTH registry.heroku.com
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
             echo heroku container:release web
@@ -84,10 +84,4 @@ workflows:
             branches:
               only:
                 - main
-      - deploy-heroku:
-          requires:
-            - build-image-docker
-          filters:
-            branches:
-              only:
-                - main
+
