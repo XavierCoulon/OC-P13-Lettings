@@ -67,7 +67,7 @@ jobs:
             docker tag $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker login --username=$DOCKER_HUB_USER --password=$HEROKU_AUTH registry.heroku.com
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            echo heroku container:release web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 
   deploy-heroku-old:
     docker:
