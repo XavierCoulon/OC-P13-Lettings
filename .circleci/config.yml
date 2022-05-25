@@ -69,6 +69,20 @@ jobs:
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
             echo heroku container:release web
 
+  deploy-heroku-old:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: build image then push to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -84,5 +98,11 @@ workflows:
             branches:
               only:
                 - main
-
+      - deploy-heroku-old:
+          requires:
+            - build-image-docker
+          filters:
+            branches:
+              only:
+                - main
 
