@@ -75,3 +75,34 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Déploiement
+
+L'application est paramétrée pour utiliser les plateformes ci-dessous:
+
+- [CircleCI](https://circleci.com/signup/) concernant l'intégration et livraison continues,
+- [Docker Hub](https://hub.docker.com/signup) concernant la création et partage de containers,
+- [Heroku](https://signup.heroku.com/php) comme cloud d'hébergement,
+- [Sentry](https://sentry.io/signup/) concernant le suivi des erreurs et bugs.
+
+La création d'un compte pour chacune d'entre elles sera donc nécessaire (suivre les liens ci-dessus et privilégier l'authentification via votre compte GitHub).
+Il est aussi nécessaire d'installer Heroku Commande Line Interface ([CLI](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)).
+
+Une fois les différents comptes créés, suivre les étapes ci-dessous:
+
+Au sein de CirclCI:
+1. "Follow" le dépôt GitHub cloné préalablement,
+2. Paramétrer au niveau de votre projet les variables d'environnement suivantes :
+- SECRET_KEY: votre clé Django,
+- DOCKER_HUB_USER: votre user Docker Hub,
+- DOCKER_HUB_PASSWORD: votre mot de passe Docker Hub,
+- DOCKER_REPO: le nom du repo créé dans Docker,
+- HEROKU_APP_NAME: le nom de l'app choisi dans Heroku,
+- HEROKU_API_KEY: clé API de votre compte Heroku,
+- HEROKU_AUTH ?!?
+
+Au sein d'Heroku:
+1. Paramétrer au niveau de votre app les variables de configuration suivantes: 
+- PORT : 8000,
+- SECRET_KEY: votre clé Django,
+- SENTRY_DSN: votre clé Sentry
