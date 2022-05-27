@@ -55,10 +55,7 @@ jobs:
             docker push $DOCKER_HUB_USER/$DOCKER_REPO:$CIRCLE_SHA1
 
   deploy-heroku:
-    docker:
-      - image: cimg/python:3.10.4
     steps:
-      - checkout
       - setup_remote_docker
       - run:
           name: push previous image to Heroku
