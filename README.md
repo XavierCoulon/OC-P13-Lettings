@@ -99,7 +99,7 @@ Au sein de CirclCI:
 - DOCKER_REPO: le nom du repo créé dans Docker,
 - HEROKU_APP_NAME: le nom de l'app choisi dans Heroku,
 - HEROKU_API_KEY: clé API de votre compte Heroku,
-- HEROKU_AUTH ?!?
+- HEROKU_AUTH: token de votre compte Heroku.
 
 Au sein d'Heroku:
 1. Paramétrer au niveau de votre app les variables de configuration suivantes:

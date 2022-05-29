@@ -67,8 +67,8 @@ jobs:
             docker login --username=$DOCKER_HUB_USER --password=$HEROKU_AUTH registry.heroku.com
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            heroku container:login
-            heroku container:release -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 
   deploy-heroku-V2:
     docker:
@@ -80,9 +80,9 @@ jobs:
           name: build image then push to Heroku
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            heroku container:login
-            heroku container:push -a ${HEROKU_APP_NAME} web
-            heroku container:release -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
 
 
 # Invoke jobs via workflows
