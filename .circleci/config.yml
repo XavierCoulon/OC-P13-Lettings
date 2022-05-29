@@ -67,10 +67,10 @@ jobs:
             docker login --username=$DOCKER_HUB_USER --password=$HEROKU_AUTH registry.heroku.com
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a ${HEROKU_APP_NAME} web
+            heroku container:login
+            heroku container:release -a ${HEROKU_APP_NAME} web
 
-  deploy-heroku-old:
+  deploy-heroku-V2:
     docker:
       - image: cimg/python:3.10.4
     steps:
