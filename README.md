@@ -102,7 +102,6 @@ Au sein de CirclCI:
 - HEROKU_AUTH ?!?
 
 Au sein d'Heroku:
-1. Paramétrer au niveau de votre app les variables de configuration suivantes: 
-- PORT : 8000,
+1. Paramétrer au niveau de votre app les variables de configuration suivantes:
 - SECRET_KEY: votre clé Django,
 - SENTRY_DSN: votre clé Sentry
